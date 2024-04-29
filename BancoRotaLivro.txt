@@ -1,0 +1,24 @@
+create table usuario (
+    id_usuario int primary key AUTO_INCREMENT,
+    email varchar(254),
+    senha varchar(100)
+);
+
+INSERT INTO usuario VALUES
+(1, 'Bárbara@gmail.com', '12345678');
+
+create table livro (
+    id_livros int auto_increment primary key,
+    id_usuario int DEFAULT NULL,
+    titulo varchar(100),
+    autor varchar(254),
+    ano_publicado int,
+    KEY id_usuario (id_usuario),
+    CONSTRAINT livro FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
+);
+
+insert into livro values
+(1, 1, 'A hipótese do amor', 'Ali Hazelwood', 2023),
+(2, 1, 'Noiva', 'Ali Hazelwood', 2024),
+(3, 1, 'A Biblioteca da Meia-Noite', 'Matt Haig', 2020),
+(4, 1, 'A Vida Invisível de Addie LaRue', 'V. E. Schwab', 2020);
